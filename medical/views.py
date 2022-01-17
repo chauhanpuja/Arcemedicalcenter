@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from. models import Contact,Post,Departmentt,Team,Appointment
+from. models import Contact,Post,Departmentt,Team,Appointment,Carrier
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -21,14 +21,22 @@ def index(request):
     return render(request,'index.html',post)
 
 def about(request):
+    department=Departmentt.objects.all()
     team=Team.objects.all
     team={
-        'team':team
+        'team':team,
+        'department':department,
     }
     return render(request,'about.html',team)
 
 
 def contact(request):
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
     if request.method=='POST': 
         
         name=request.POST.get('name','')
@@ -53,9 +61,15 @@ def contact(request):
         except Exception as e:
             return redirect('/contact')
 
-    return render(request,'contact.html')
+    return render(request,'contact.html',team)
 
 def appointment(request):
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
     if request.method=='POST': 
         
         name=request.POST.get('name','')
@@ -80,46 +94,97 @@ def appointment(request):
         
         except Exception as e:
             return redirect("appointment")
-    return render(request,'appointment.html')
+    return render(request,'appointment.html',team)
 
 
 
 def doctor(request):
+    department=Departmentt.objects.all()
     team=Team.objects.all
     team={
-        'team':team
+        'team':team,
+        'department':department,
     }
     return render(request,'doctor.html',team)
 
+def carrier(request):
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
+    if request.method=='POST': 
+        carrier=request.POST.get('carrier','')
+        name=request.POST.get('name','')
+        email=request.POST.get('email','')
+        gender=request.POST.get('gender','')
+        phone=request.POST.get('phone','')
+        address=request.POST.get('address','')
+        exp=request.POST.get('exp','')
+        resume=request.POST.get('resume','')
+        education=request.POST.get('education','')
+        skill=request.POST.get('skill','')
+        
+        
+        carrier=Carrier(carrier=carrier,name=name,email=email,gender=gender,phone=phone,address=address,exp=exp,resume=resume,education=education,skill=skill)
+        carrier.save()
+        messages.info(request,"Successfully Submiited")
+        return redirect('/')
+    return render(request,'carrier.html',team)
+
+
 def doctor_details(request,slug):
+    department=Departmentt.objects.all()
+    
+    
     team=Team.objects.filter(slug=slug)
     team={
-        'team':team
+        'team':team,
+        'department':department,
     }
     return render(request,'doctor_detail.html',team)
 
 def pricing(request):
-    return render(request,'pricing.html')
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
+    return render(request,'pricing.html',team)
 
 def project_details(request):
+    
     return render(request,'project_details.html')
 
+
 def services(request):
-    return render(request,'services.html')
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
+    return render(request,'services.html',team)
 
 def blog(request):
+    department=Departmentt.objects.all()
     post=Post.objects.all
     post={
-        'post':post
+        'post':post,
+        'department':department,
     }
     return render(request,'blog.html',post)
 
 def post(request,slug):
+    department=Departmentt.objects.all()
     allpost=Post.objects.all
     post=Post.objects.filter(slug=slug)
     post={
         'post':post,
-        'allpost':allpost
+        'allpost':allpost,
+        'department':department,
     }
     
     return render(request,'post.html',post)
@@ -135,6 +200,9 @@ def department(request,slug):
     return render(request,'department.html',department)
 
 def search(request):
+    department=Departmentt.objects.all()
+    
+   
     query=request.GET['query']
     post=Post.objects.filter(title__icontains=query)
     # post=Post.objects.filter(desc__icontains=query)
@@ -144,15 +212,28 @@ def search(request):
     # post=Post.objects.filter(date__icontains=query)
 
     post={
-        'post':post
+        'post':post,
+        'department':department,
     }
     return render(request,'search.html',post)
 
 
 def time_table(request):
-    return render(request,'time_table.html')
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
+    return render(request,'time_table.html',team)
 
 def userlogin(request):
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
     if request.method=="POST":
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -172,7 +253,7 @@ def userlogin(request):
 
         
 
-    return render(request,'login.html')
+    return render(request,'login.html',team)
     
     
 def handlelogout(request):
@@ -183,6 +264,12 @@ def handlelogout(request):
 
 
 def registration(request):
+    department=Departmentt.objects.all()
+    
+    team={
+        
+        'department':department,
+    }
     if request.method=="POST":
         username=request.POST.get('username')
         
@@ -223,7 +310,7 @@ def registration(request):
     else:
 
         
-        return render(request,'registration.html')
+        return render(request,'registration.html',team)
     
     
 

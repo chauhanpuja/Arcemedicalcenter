@@ -62,3 +62,19 @@ class Appointment(models.Model):
     
     def __str__(self):
         return self.name
+
+class Carrier(models.Model):
+    carrier=models.CharField(max_length=200)
+    name=models.CharField(max_length=100,default="")
+    email=models.EmailField(blank=True,unique=False)
+    gender=models.CharField(max_length=200)
+    phone=models.CharField(max_length=200)
+    
+    address=models.CharField(max_length=200)
+    exp=models.IntegerField()
+    resume=models.FileField(upload_to='news',max_length=250,null=True,default=None)
+    education=models.CharField(max_length=250)
+    skill=models.CharField(max_length=250)
+    
+    def __str__(self):
+        return self.name

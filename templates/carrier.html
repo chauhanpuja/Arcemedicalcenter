@@ -1,0 +1,139 @@
+{%extends 'base.html' %}
+{%block body%}
+
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="breadcrumbs-content">
+                        <h1 class="page-title">Career</h1>
+                    </div>
+                    <ul class="breadcrumb-nav">
+                        <li><a href="/">Home</a></li>
+                        <li>Career</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	<section class="appointment page section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+
+                    <div class="appointment-form">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="appointment-title">
+                                    <h2>Choose an Career Option</h2>
+                                    <!-- <p>Please feel welcome to contact our friendly reception staff with any general or
+                                        medical
+                                        enquiry. Our doctors will receive or return any urgent calls.</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <form action="/carrier" method="post">{% csrf_token %}
+                        <div class="row">
+                            
+							<div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="carrier"><i class="lni lni-user"></i></label>
+                                    <select name="carrier" id="carrier">
+                                        <option value="none" selected disabled>Choose an Carrier</option>
+                                        <option value="it">IT</option>
+                                        <option value="hr">HR</option>
+										<option value="business">Business</option>
+										<option value="consult">Consult</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="name"><i class="lni lni-user"></i></label>
+                                    <input type="text" name="name" id="name" placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="email"><i class="lni lni-envelope"></i></label>
+                                    <input type="email" name="email" id="email" placeholder="Your Email">
+                                </div>
+                            </div>
+							<div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="gender"><i class="lni lni-user"></i></label>
+                                    <select name="gender" id="gender">
+                                        <option value="none" selected disabled>Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="number"><i class="lni lni-phone-set"></i></label>
+                                    <input type="text" name="phone" id="number" placeholder="Phone Number">
+                                </div>
+                            </div>
+
+							<div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="address"><i class="lni lni-phone-set"></i></label>
+                                    <input type="text" name="address" id="address" placeholder="Address">
+                                </div>
+                            </div>
+
+							<div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="exp"></label>
+                                    <input type="text" name="exp" id="exp" placeholder="Total Work Experience">
+                                </div>
+                            </div>
+							<div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="resume">Attach Your Resume</label>
+                                    <input type="file" name="resume" id="resume" placeholder="Attach Your Resume">
+                                </div>
+                            </div>
+                           
+                            <!-- <div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-input">
+                                    <label for="date"><i class="lni lni-user"></i></label>
+                                    <input type="date" name="date" id="date">
+                                </div> -->
+                            </div>
+							<div class="col-12 p-0">
+                                <div class="appointment-input">
+                                    <textarea name="education" placeholder="Eductaion....."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 p-0">
+                                <div class="appointment-input">
+                                    <textarea name="skill" placeholder="Key Skill....."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                <div class="appointment-btn button">
+                                    <button type="submit" class="btn">Submit</button>
+                                </div>
+                            </div>
+
+                           
+                        </div>
+                    </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    {%endblock%}

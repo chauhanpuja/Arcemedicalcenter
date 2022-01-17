@@ -113,21 +113,7 @@
                                                         Additional Services</b></a>
                                             </li>
 
-                                            <li class="nav-item">
-                                                <a href="/department"><b>
-                                                        Department</b></a>
-                                                    <ul class="sub-menu collapse">
-                                                        {%for i in department%}
-                                                        <li class="nav-item">
-
-                                                            <a href="/department/{{i.slug}}"><b>
-                                                                   {{i.name}}</b></a>
-                                                        </li>
-                                                        {%endfor%}
-            
-                                                    </ul>
-                                            </li>
-
+                                            
 
                                         </ul>
                                     </li>
@@ -136,6 +122,22 @@
                                         <a href="/doctor"><b>Doctors</b></a>
 
                                     </li>
+                                    <li class="nav-item">
+
+                                        <a ><b>Department</b></a>
+                                        <ul class="sub-menu collapse">
+                                            {%for i in department%}
+                                            <li class="nav-item">
+
+                                                <a href="/department/{{i.slug}}"><b>
+                                                       {{i.name}}</b></a>
+                                            </li>
+                                            {%endfor%}
+
+                                        </ul>
+
+                                    </li>
+
                                     <!-- <li class="nav-item">
                                         <a class="page-scroll dd-menu
                                                 collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
@@ -194,6 +196,11 @@
                                 <a href="/appointment" class="btn"><b>Book
                                         Appointment</b></a>
                             </div>
+
+                            <div class="button add-list-button">
+                                <a href="/carrier" class="btn"><b>Career</b></a>
+                            </div>
+
                         </nav>
                     </div>
                 </div>
@@ -255,7 +262,13 @@
                                 <a href="/">
                                     <!-- <img src="assets/images/logo/logo.png" alt="#" /> -->
                                     <h4 style="color: brown;">Arcemedicalcenter</h4>
+                                   
                                 </a>
+                                
+                                <div class="button add-list-button my-2">
+                                    <a href="/carrier" class="btn" ><b>Career</b></a>
+                                </div>
+                               
                             </div>
 
 
