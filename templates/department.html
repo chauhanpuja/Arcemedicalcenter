@@ -1,0 +1,75 @@
+
+{%extends 'base.html' %}
+{%block body%}
+
+<div class="breadcrumbs overlay">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Department</h1>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="/">Home</a></li>
+                    <li>Department</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 class="my-5"></h1>
+
+                     <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="{{i.name}}" role="tabpanel"
+                            aria-labelledby="{{i.name}}-tab">
+                            <div class="department-content">
+                                {%for i in department%}
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        <div class="image">
+                                            <img src="/media/{{i.image}}" height="400px" width="600px" alt="#" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-12">
+                                        <div class="text ">
+                                            <h3>{{i.name}}</h3>
+                                            <ul class="list my-4">
+                                                <li>
+                                                    <i class="lni
+                                                            lni-checkbox"></i>Get the oars in the water and start
+                                                    rowing
+                                                </li>
+                                                <li>
+                                                    <i class="lni
+                                                            lni-checkbox"></i>Introspection is the trick.
+                                                </li>
+                                                <li>
+                                                    <i class="lni
+                                                            lni-checkbox"></i>Most people believe that success is
+                                                    difficult.
+                                                </li>
+                                            </ul>
+                                            <p>
+                                                For those of you who are serious about having more, doing more, giving
+                                                more and being more, success is achievable with some understanding of
+                                                what to do, some discipline around planning and execution of those plans
+                                                and belief that you can achieve your
+                                                desires.
+                                            </p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non leo
+                                                nunc. Vivamus lacinia massa nec sem sagittis.
+                                            </p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endfor%}
+
+
+                            </div>
+                        </div> 
+
+<h1 class="my-5"></h1>
+
+                    {%endblock%}

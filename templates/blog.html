@@ -1,0 +1,285 @@
+
+{%extends 'base.html' %}
+{%block body%}
+
+
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="breadcrumbs-content">
+                        <h1 class="page-title">Blog</h1>
+                    </div>
+                    <ul class="breadcrumb-nav">
+                        <li><a href="/">Home</a></li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section latest-news-area blog-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-12">
+
+                    <div class="single-news">
+                        {%for posts in post%}
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-12 pr-0">
+                                <div class="image">
+                                    <a href="/post/{{posts.slug}}"><img src="/media/{{posts.image}}"
+                                        width="500px" height="250px" alt="#"></a>
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-7 col-md-7 col-12  pl-0">
+                                <div class="content">
+                                    <h2 class="title"><a href="/post/{{posts.slug}}">{{posts.title}}</a>
+                                    </h2>
+                                    <p>{{posts.desc}}</p>
+                                    <ul class="meta-info">
+                                        <li>
+                                            <a ><img src="/media/{{posts.writer_img}}"
+                                                    alt="#">{{posts.name}}
+                                               </a>
+                                        </li>
+                                        <li>
+                                            <a >{{posts.date}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h1 class="my-3"></h1>
+                        </div>
+                        {%endfor%}
+                    </div>
+
+
+               
+                   
+                    <!-- <div class="pagination left blog-grid-page">
+                        <ul class="pagination-list">
+                            <li><a href="javascript:void(0)">Prev</a></li>
+                            <li class="active"><a href="javascript:void(0)">2</a></li>
+                            <li><a href="javascript:void(0)">3</a></li>
+                            <li><a href="javascript:void(0)">4</a></li>
+                            <li><a href="javascript:void(0)">Next</a></li>
+                        </ul>
+                    </div> -->
+
+                    <section class="appointment page section">
+                        <div class="container-fluid" >
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                
+                                    <div class="appointment-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="appointment-title">
+                                                    <h2>Book An Appointment</h2>
+                                                    <p>Please feel welcome to contact our friendly reception staff with any general or
+                                                        medical
+                                                        enquiry. Our doctors will receive or return any urgent calls.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form action="/appointment" method="post">{% csrf_token %}
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="name"><i class="lni lni-user"></i></label>
+                                                    <input type="text" name="name" id="name" placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="email"><i class="lni lni-envelope"></i></label>
+                                                    <input type="email" name="email" id="email" placeholder="Your Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="number"><i class="lni lni-phone-set"></i></label>
+                                                    <input type="text" name="phone" id="number" placeholder="Phone Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="department"><i class="lni lni-notepad"></i></label>
+                                                    <select name="department" id="department">
+                                                        <option value="none" selected disabled>Department</option>
+                                                        <option value="Gynacologist">Gynacologist</option>
+                                                        <option value="Cardiologist">Cardiologist</option>
+                                                        <!-- <option value="none">Nutrition & Dietetics</option>
+                                                        <option value="none">Cardiology</option>
+                                                        <option value="none">Neurology</option>
+                                                        <option value="none">Pediatric</option> -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="doctor"><i class="lni lni-sthethoscope"></i></label>
+                                                    <select name="doctor_name" id="doctor">
+                                                        <option value="none" selected disabled>Doctor</option>
+                                                        <option value="Felica Queen">Dr.Felica Queen</option>
+                                                        <option value="Alice Williams">Dr.Alice Williams</option>
+                                                        <!-- <option value="none">Dr.Michael Bean</option>
+                                                        <option value="none">Dr.Harry Russell</option>
+                                                        <option value="none">Dr.Mellissa Doe</option> -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <label for="date"><i class="lni lni-user"></i></label>
+                                                    <input type="date" name="date" id="date">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 p-0">
+                                                <div class="appointment-input">
+                                                    <textarea name="msg" placeholder="Write Your Message Here....."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12 p-0">
+                                                <div class="appointment-btn button">
+                                                    <button type="submit" class="btn">Get Appointment</button>
+                                                </div>
+                                            </div>
+                
+                                           
+                                        </div>
+                                    </form>
+                                    </div>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                
+                <aside class="col-lg-4 col-md-12 col-12">
+                    <div class="sidebar blog-grid-page">
+
+                        <div class="widget search-widget">
+                            <h5 class="widget-title">Search This Site</h5>
+                            <form action="/search" method="get">
+                                <input type="text" name="query" placeholder="Search Here...">
+                                <button type="submit"><i class="lni lni-search-alt"></i></button>
+                            </form>
+                        </div>
+
+
+                        <div class="widget popular-feeds">
+                            <h5 class="widget-title">All News</h5>
+                            <div class="popular-feed-loop">
+                               
+                               {%for posts in post%}
+                                <div class="single-popular-feed">
+                                    <div class="feed-desc">
+                                        <a class="feed-img" href="/post/{{posts.slug}}">
+                                            <img src="/media/{{posts.image}}" alt="#">
+                                        </a>
+                                        <h6 class="post-title"><a href="/post/{{posts.slug}}">{{posts.title}}</a></h6>
+                                        <span class="time"><i class="lni lni-calendar"></i> {{posts.date}}</span>
+                                    </div>
+                                </div>
+                               {%endfor%}
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="widget categories-widget">
+                            <h5 class="widget-title">Categories</h5>
+                            <ul class="custom">
+                                <li>
+                                    <a href="javascript:void(0)">Finance</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Marketing</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Operations</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Strategy</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">People</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">Jobs</a>
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        
+
+                        <!-- <div class="widget popular-tag-widget">
+                            <h5 class="widget-title">Popular Tags</h5>
+                            <div class="tags">
+                                <a href="javascript:void(0)">Operations</a>
+                                <a href="javascript:void(0)">People</a>
+                                <a href="javascript:void(0)">HR</a>
+                                <a href="javascript:void(0)">Finance</a>
+                                <a href="javascript:void(0)">Interview</a>
+                                <a href="javascript:void(0)">Jobs</a>
+                                <a href="javascript:void(0)">Business</a>
+                                <a href="javascript:void(0)">Salary</a>
+                                <a href="javascript:void(0)">Disease</a>
+                                <a href="javascript:void(0)">Consult</a>
+                                <a href="javascript:void(0)">Employee</a>
+                            </div>
+                        </div> -->
+
+
+                        <!-- <div class="widget appointment-widget">
+                            <h5 class="widget-title">Make An Appointment</h5>
+                            <form class="form" action="#" method="POST">
+                                <div class="form-box form-group">
+                                    <input type="text" name="name" class="form-control form-control-custom"
+                                        placeholder="Your Name" />
+                                </div>
+                                <div class="form-box form-group">
+                                    <input type="email" name="email" class="form-control form-control-custom"
+                                        placeholder="Your Email" />
+                                <div class="form-box form-group">
+                                    <textarea name="#" class="form-control form-control-custom"
+                                        placeholder="Your Message"></textarea>
+                                </div>
+                                <div class="button">
+                                    <button type="button" class="btn">Submit</button>
+                                </div>
+                            </form>
+                        </div> -->
+
+                        
+
+                        <div class="widget help-call">
+                            <h5 class="widget-title">Need Help?</h5>
+                            <div class="inner">
+                                <h3>
+                                    Online Help!
+                                    <span>+(123) 456-78-90</span>
+                                </h3>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+
+   {%endblock%}
