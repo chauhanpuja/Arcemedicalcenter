@@ -15,6 +15,7 @@ urlpatterns = [
     path('doctor_details/<str:slug>',views.doctor_details,name="doctor_details"),
 
     path('login',views.userlogin,name="login"),
+    path('job',views.job,name="job"),
     path('carrier',views.carrier,name="carrier"),
     
     path('handlelogout',views.handlelogout,name="handlelogout"),

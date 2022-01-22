@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from. models import Contact,Post,Departmentt,Team,Appointment,Carrier
+from. models import Contact,Post,Departmentt,Team,Appointment,Carrier,Job
 from django.conf import settings
 from django.core.mail import send_mail
 
@@ -107,6 +107,15 @@ def doctor(request):
     }
     return render(request,'doctor.html',team)
 
+def job(request):
+    jobs=Job.objects.all
+    data={
+        'jobs':jobs
+    }
+
+
+    return render(request,'job.html',data)
+
 def carrier(request):
     department=Departmentt.objects.all()
     
@@ -122,12 +131,14 @@ def carrier(request):
         phone=request.POST.get('phone','')
         address=request.POST.get('address','')
         exp=request.POST.get('exp','')
-        resume=request.POST.get('resume','')
+        
+       
         education=request.POST.get('education','')
         skill=request.POST.get('skill','')
+        resume=request.FILES['resume']
+        print(resume)
         
-        
-        carrier=Carrier(carrier=carrier,name=name,email=email,gender=gender,phone=phone,address=address,exp=exp,resume=resume,education=education,skill=skill)
+        carrier=Carrier(carrier=carrier,name=name,email=email,gender=gender,phone=phone,address=address,exp=exp,education=education,skill=skill,resume=resume)
         carrier.save()
         messages.info(request,"Successfully Submiited")
         return redirect('/')
@@ -277,19 +288,14 @@ def registration(request):
         pass1=request.POST.get('pass1')
         pass2=request.POST.get('pass2')
 
-        # if User.objects.filter(name=name).exists():
-        #     messages.info(request,"name already taken")
-        #     return redirect("signup")
+       
         
         if User.objects.filter(email=email).exists():
             messages.info(request,"Email already taken")
             return redirect("registration")
 
 
-        # if len(username)>10:
-        #     messages.error(request,"Username must be under 10 character")
-        #     return redirect("signup")
-
+       
         if not username.isalnum():
             messages.error(request,"Username should only contain letters and numbers")
             return redirect("registration")

@@ -1,0 +1,66 @@
+{%extends 'base.html' %}
+{%block body%}
+
+
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="breadcrumbs-content">
+                        <h1 class="page-title">Jobs</h1>
+                    </div>
+                    <ul class="breadcrumb-nav">
+                        <li><a href="/">Home</a></li>
+                        <li>Jobs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="job-grid-section content-area-5">
+        <div class="container my-4">
+            <h1 class="">Jobs Reuirement</h1>
+        </div>
+        <div class="container my-5 ">
+            
+            <div class="row">
+              
+                <div class="col-12">
+                   
+                    <div class="row">
+                        {%for jobs in jobs%}
+                        <div class="col-lg-4 col-md-6 col-sm-6" >
+                            <div class="row my-3">
+                                <div class="col-sm-6 ">
+                                  <div class="card" style="width: 310px;" >
+                                    <!-- <h2><a href="#">{{jobs.name}}</a></h2> -->
+                                    <div class="card-body" >
+
+                                      <h3 class="card-title" style="text-align: center;">{{jobs.name}}</h3>
+                                      <br>
+                                      <p class="card-title"><b>Location - {{jobs.city}}</b></p>
+                                      <p class="card-title"><b>Timing - {{jobs.timing}}</b></p>
+                                      <p class="card-title"><b>Salary - {{jobs.salary}}</b></p>
+                                      <!-- <p class="card-text">{{jobs.desc|slice:"1:10"}}</p> -->
+                                      <a href="/carrier"> <button class="btn btn-success" style="text-align: center;width:270px" >Job Apply</button></a>
+                                    </div>
+                                  </div>
+                                </div>
+                              
+                              </div>
+
+                            
+                        </div>
+                        
+                        {%endfor%}
+                        <br>
+                   
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {%endblock%}

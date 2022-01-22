@@ -72,9 +72,22 @@ class Carrier(models.Model):
     
     address=models.CharField(max_length=200)
     exp=models.IntegerField()
-    resume=models.FileField(upload_to='news',max_length=250,null=True,default=None)
+    resume=models.FileField(upload_to='image',max_length=250,null=True,default=None)
     education=models.CharField(max_length=250)
     skill=models.CharField(max_length=250)
     
+    def __str__(self):
+        return self.name
+
+
+class Job(models.Model):
+    name=models.CharField(max_length=200)
+    slug=AutoSlugField(populate_from='name',unique=True,null=True,default=None)
+    city=models.CharField(max_length=200)
+    location=models.CharField(max_length=300)
+    timing=models.CharField(max_length=100)
+    salary=models.IntegerField()
+    desc=models.TextField()
+
     def __str__(self):
         return self.name
